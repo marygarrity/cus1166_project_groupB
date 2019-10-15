@@ -1,23 +1,20 @@
-import mysql.connector
+from sqlalchemy import Table, Column, Integer, String, MetaData
+meta = MetaData()
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="myusername",
-  passwd="mypassword",
-  database="mydatabase"
+users = Table('users', meta,
+    Column('user_id', Integer, primary_key = True),
+    Column('user_name', String),
+    Column('user_password', String),
+)#users table
+
+meta.create_all(engine)
+
+CREATE TABLE users(
+    user_id INTEGER NOT NULL,
+    user_name VARCHAR,
+    user_password VARCHAR,
+    PRIMARY KEY (user_id)
 )
-
-mycursor = mydb.cursor()
-mycursor.execute("CREATE TABLE users (car_model VARCHAR(255), car_vimNum VARCHAR(255))") #user table
-
-#If this page is executed with no error, you have successfully created a table named "user_table"
-
-__tablename__ = "user_table"
-__table_args__ = {"schema": "example"} #?
-
-user_id = Column(Integer, primary_key=True, nullable=False)
-user_name = Column(String(100), nullable=False)
-user_password = Column(String(100), nullable=False)
 
 class users:
 
@@ -44,7 +41,7 @@ class users:
         return self.user_password
 
     def get_user_information(self):
-        return ("ID: " + self.user_id + "   Username: " + self.user_name + "   Password: "+ self.user_password)
+        return ("ID: " + self.user_id + "   Username: " + self.user_name + "   Password: " + self.user_password)
 
 def main():
     user_id = uuid() #uuid variable?
