@@ -21,3 +21,7 @@ Car =[
 @app.route("/")
 def home():
     return render_template('index.html', Car=Car)
+
+@app.route("/userlist")
+def home():
+    return render_template('user.html', User=User)

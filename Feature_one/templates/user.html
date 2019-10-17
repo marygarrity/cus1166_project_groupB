@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h1>Welcome to the User list</h1>
+    {% for User in User %}
+      <h4>The users name is {{User.name}} and there id is {{User.id}} and they have a {{User.cars}} car
+      </h4>
+
+    {%endfor%}
+  </body>
+</html>
